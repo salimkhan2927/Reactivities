@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
@@ -8,39 +7,39 @@ using Persistence;
 
 namespace API.Controllers
 {
-    
-   [Route("api/[controller]")]
-   [ApiController]
-    public class ValuesController:ControllerBase
+
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ValuesController : ControllerBase
     {
         private DataContext _repo;
 
         public ValuesController(DataContext repo)
         {
-            _repo=repo;
+            _repo = repo;
         }
 
-          [HttpGet]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Value>>> Get()
         {
-            var values=await _repo.Values.ToListAsync();
+            var values = await _repo.Values.ToListAsync();
             return Ok(values);
         }
 
-       [HttpGet("{id}")]
+        [HttpGet("{id}")]
         public async Task<Value> Get(int id)
         {
-            var value=await _repo.Values.FindAsync(id);
+            var value = await _repo.Values.FindAsync(id);
             return value;
         }
 
         [HttpPost]
-        public void SaveNewValue([FromBody]string value)
+        public void SaveNewValue([FromBody] string value)
         {
         }
 
         [HttpPut]
-        public void UpdateValue(int id, [FromBody]string value)
+        public void UpdateValue(int id, [FromBody] string value)
         {
         }
 

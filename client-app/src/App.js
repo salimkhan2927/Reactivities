@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
-import { Header, Icon } from "semantic-ui-react";
+import { Header, Icon, List } from "semantic-ui-react";
 
 class App extends Component {
   constructor(props) {
@@ -23,11 +23,11 @@ class App extends Component {
           <Icon name="users" />
           <Header.Content>Reactivities</Header.Content>
         </Header>
-        <ul>
+        <List>
           {this.state.values.map((value) => (
-            <li key={value.id}>{value.name}</li>
+            <List.Item key={value.id}>{value.name}</List.Item>
           ))}
-        </ul>
+        </List>
       </div>
     );
   }
